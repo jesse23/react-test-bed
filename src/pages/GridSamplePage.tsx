@@ -25,6 +25,7 @@ export const GridSamplePage = () => {
       console.log("code", code);
       console.log("JSON.parse(code)", JSON.parse(code));
       setConfig(JSON.parse(code));
+      setError("");
     } catch (e) {
       setError((e as Error).message);
     }
