@@ -18,7 +18,7 @@ remoteApi.register({
 });
 
 const OpsSamplePage = () => {
-  useDynamicCss("/OpsSamplePage.css", "dynamic-css");
+  useDynamicCss("./OpsSamplePage.css", "dynamic-css");
 
   const [iframeCompApiContent, setIframeCompApiContent] = useState(
     "Call component-level-api in iframe component"
@@ -181,7 +181,7 @@ const OpsSamplePage = () => {
         >
           <iframe
             id="iframe-sample"
-            src="/#/ops_iframe"
+            src="./#/ops_iframe"
             style={{
               width: "100%",
               height: "inherit",

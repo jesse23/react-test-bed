@@ -5,6 +5,11 @@ import { MyComponent } from "./pages/ops/MyComponent";
 const ROUTES: Record<string, JSX.ElementType> = {
   grid: lazy(() => import("./pages/GridSamplePage")),
   ops: lazy(() => import("./pages/OpsSamplePage")),
+  ctx: lazy(() => import("./pages/CtxSamplePage")),
+  report: lazy(() => import("./pages/ReportSamplePage")),
+  iframe: lazy(() => import("./pages/IframeSamAuthSamplePage")),
+  portal: lazy(() => import("./pages/PortalStateSamplePage")),
+  dock: lazy(() => import("./pages/DockSamplePage")),
 };
 
 const Router = () => {
