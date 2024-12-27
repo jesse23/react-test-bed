@@ -1,6 +1,6 @@
 // Render react to custom element
 import React from "react";
-import { createRoot, Root } from "react-dom/client";
+// import { createRoot, Root } from "react-dom/client";
 import MyComponent from "./MyComponent";
 
 class MyComponentElement extends HTMLElement {

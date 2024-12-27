@@ -1,9 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Router from './Router'
+import React from "react";
+import ReactDOMClient from "react-dom/client";
+import Router from "./Router";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+/*
+const params = new URLSearchParams(window.location.search);
+const useLegacy = params.get("r17") === '';
+*/
+
+ReactDOMClient.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Router />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
