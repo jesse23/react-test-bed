@@ -10,6 +10,9 @@ const ROUTES: Record<string, JSX.ElementType> = {
   iframe: lazy(() => import("./pages/IframeSamAuthSamplePage")),
   portal: lazy(() => import("./pages/PortalStateSamplePage")),
   dock: lazy(() => import("./pages/DockSamplePage")),
+  batch: lazy(() => import("./pages/R18BatchSamplePage")),
+  r18: lazy(() => import("./pages/ReactUpgradeSample")),
+  r18c: lazy(() => import("./pages/ReactUpgradeCheckBoxSample")),
 };
 
 const Router = () => {
