@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDataProvider } from "./DataProvider";
+import { useDataProviderV3 as useDataProvider } from "./DataProvider";
 
 // r17
 // - all setState will be executed immediately
@@ -9,8 +9,8 @@ import { useDataProvider } from "./DataProvider";
 // r18 concurrent mode
 // - all setState will be batched
 
-export function SampleV0() {
-  const { getData, setData } = useDataProvider({ selected: 6 });
+export function SampleV0({ concurrentMode = false }: { concurrentMode: boolean }) {
+  const { getData, setData } = useDataProvider({ selected: 6 }, concurrentMode);
   const [selected, setSelected] = useState(getData().selected);
 
   return (
@@ -21,6 +21,7 @@ export function SampleV0() {
       <button
         onClick={() => {
           Promise.resolve().then(() => {
+            // if we flushSync to both, it is not working
             setData({ selected: 0 });
             setSelected(getData().selected);
           });

@@ -11,8 +11,10 @@ export function SampleV1() {
     Promise.resolve().then(() => {
       if (getData().selected === 0) {
         // issue for v1: this schedule will not be executed
+        setData({ selected: 1 });
         schedulePostDispatchEvents({
           execute: () => {
+            setSelected(getData().selected);
             console.log("Job (schedule in use effect promise) executed");
           },
         });
@@ -29,37 +31,28 @@ export function SampleV1() {
       <div>Current selection (by action): {selected}</div>
       <button
         onClick={() => {
-          Promise.resolve()
-            .then(() => {
-              setData({ selected: 0 });
-              schedulePostDispatchEvents({
-                execute: () => {
-                  setSelected(getData().selected);
-                },
-              });
-            })
-            .then(() => {
-              return fetch("/");
-            })
-            .then(() => {
-              // issue for v1: this schedule will not be executed
-              schedulePostDispatchEvents({
-                execute: () => {
-                  console.log("Job (schedule in action promise) executed");
-                },
-              });
+          Promise.resolve().then(() => {
+            setData({ selected: 0 });
+            schedulePostDispatchEvents({
+              execute: () => {
+                console.log("Job (schedule in action) executed");
+                setSelected(getData().selected);
+              },
             });
 
-          // issue for v1: this schedule will not be executed
-          setTimeout(
-            () =>
-              schedulePostDispatchEvents({
-                execute: () => {
-                  console.log("Job (schedule in action setTimeout) executed");
-                },
-              }),
-            100
-          );
+            schedulePostDispatchEvents({
+              execute: () => {
+                // issue for v1: this schedule will not be executed
+                setData({ selected: 2 });
+                schedulePostDispatchEvents({
+                  execute: () => {
+                    console.log("Job (schedule in post action) executed");
+                    setSelected(getData().selected);
+                  },
+                });
+              },
+            });
+          });
         }}
       >
         Select None

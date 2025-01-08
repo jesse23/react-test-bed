@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDataProvider } from "./DataProvider";
-import { useDeferJobQueue } from "./libs/v2";
+import { useDeferJobQueueLegacy as useDeferJobQueue } from "./libs/v2";
 
 export function SampleV2() {
   const { getData, setData } = useDataProvider({ selected: 6 });

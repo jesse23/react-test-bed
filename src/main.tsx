@@ -8,7 +8,5 @@ const useLegacy = params.get("r17") === '';
 */
 
 ReactDOMClient.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
     <Router />
-  </React.StrictMode>
 );

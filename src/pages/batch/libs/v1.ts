@@ -47,6 +47,7 @@ export const useProcessJobQueue = (
       if (queue.length === 0) {
         return;
       }
+      console.log(`useProcessJobQueue: Executing jobs for ${type}, count: ${queue.length}`);
       let jobsToUnschedule = queue
         .filter((e) => e.type === type)
         .map((event) => {
@@ -63,7 +64,6 @@ export const useProcessJobQueue = (
   );
 
   useEffect(function eventProcessingQueue() {
-    console.log(`useProcessJobQueue: Executing jobs for ${type}`);
     fn(type);
   });
 };
